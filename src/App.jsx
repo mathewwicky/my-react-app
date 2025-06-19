@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 
 // function Profile() {
 //   const [user, setUser] = useState({
@@ -46,45 +46,58 @@
 //   );
 // }
 
-
-
 // export default Profile;
 
+// function ItemList (){
+//     const [items, setItems] = useState([
+//       {id: 0, name: "Item 1"},
+//       {id: 1, name: "Item 2"},
+//       {id: 2, name: "Item 3"},
+//       {id: 3, name: "Item 4"},
+//     ]);
 
-import React, { useState } from "react";  
+//     const addItem = () => {
+//       const newItem = {id: items.length + 1, name: `Item ${items.length + 1}`};
+//       // create a new array with the new item
+//       setItems((prevItems) => [...prevItems, newItem]);
+//     }
 
-function ItemList (){
-    const [items, setItems] = useState([
-      {id: 0, name: "Item 1"},
-      {id: 1, name: "Item 2"},
-      {id: 2, name: "Item 3"},
-      {id: 3, name: "Item 4"},
-    ]);
+//     // remove an item by id
+//     const removeItem = (id) => {
+//       setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+//     }
+//     return (
+//       <div>
+//         <h1>Item List</h1>
+//        <button onClick={addItem}>Add Item</button>
+//         <ul>
+//           {items.map((item) => (
+//             <li key={item.id}>
+//               {item.name}
+//               <button onClick={() => removeItem(item.id)}>Remove</button>
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     );
+//   }
 
-    const addItem = () => {
-      const newItem = {id: items.length + 1, name: `Item ${items.length + 1}`};
-      // create a new array with the new item
-      setItems((prevItems) => [...prevItems, newItem]);
-    }
-     
-    // remove an item by id
-    const removeItem = (id) => {
-      setItems((prevItems) => prevItems.filter((item) => item.id !== id));
-    }
-    return (
-      <div>
-        <h1>Item List</h1>
-       <button onClick={addItem}>Add Item</button>
-        <ul>
-          {items.map((item) => (
-            <li key={item.id}>
-              {item.name} 
-              <button onClick={() => removeItem(item.id)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-  
-export default ItemList;
+// export default ItemList;
+
+export const ToggleApp = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleToggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  return (
+    <div id="toggle-container">
+      <button onClick={handleToggleVisibility} id="toggle-button">
+        {isVisible ? "Hide" : "Show"} Message
+      </button>
+      {isVisible && <p id="message">I love freeCodeCamp!</p>}
+    </div>
+  );
+};
+export default ToggleApp;
